@@ -6,7 +6,7 @@ template <class T>
 void UKF<T>::ukf( matrix<T>& x, const matrix<T>& z)
 {
 	const int L=2*n+1;
-	const T alpha = 1e-3;                                 //default, tunable
+	const T alpha = 1e-1;                                 //default, tunable
 	const T ki = 0.0;                                     //default, tunable
 	const T beta = 2.0;                                   //default, tunable
 	const T lambda = (alpha*alpha)*(n+ki)-n;              //scaling factor
@@ -164,12 +164,12 @@ matrix<T> UKF<T>::Cholesky(matrix<T>& A)
 				s[i]=A(i,j)-ss;
 			}
 		}
-		if (fabs(s[j])<0.000001)
+		/*if (fabs(s[j])<0.000001)
 		{
 			//cout << "ERROR: ukf.cpp Cholesky - matrix<T> not positive definite\n";
 			delete [] s;
 			return A;	// ERROR
-		}
+		}*/
 		for (i=j; i<n; i++)
 		{
 			Chol(i,j)=s[i]/sqrt(s[j]);

@@ -10,7 +10,7 @@ void setup() {
   while (!Serial);
   //Más pequeño es más
   //      suave , rápido
-  fk.init(0.001 , 0.1);
+  fk.init(0.001 , 0.25);
 }
 
 void loop() {
